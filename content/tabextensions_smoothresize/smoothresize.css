@@ -1,0 +1,64 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/*
+tabpanels > browser        : Firefox Trunk
+tabpanels > vbox > browser : Firefox 0.9.2 Branch
+*/
+
+
+tabbrowser tabpanels > browser:not([browser-in-box="true"]),
+tabbrowser tabpanels > vbox > browser:not([browser-in-box="true"])
+{
+	display: -moz-box !important;
+	-moz-binding: url("./smoothresize.xml#browserBox") !important;
+}
+tabbrowser tabpanels > browser spacer
+{
+	display: none;
+}
+
+
+[smoothresize="true"] tabbrowser tabpanels > browser[tabbrowser-inactive="true"] browser,
+[smoothresize="true"] tabbrowser tabpanels > vbox > browser[tabbrowser-inactive="true"] browser
+{
+	-moz-box-flex: 0 !important;
+	width: 0 !important;
+	min-width: 0 !important;
+	max-width: 0 !important;
+	height: 0 !important;
+	min-height: 0 !important;
+	max-height: 0 !important;
+}
+
+[smoothresize="true"] tabbrowser tabpanels > browser[tabbrowser-inactive="true"] spacer,
+[smoothresize="true"] tabbrowser tabpanels > vbox > browser[tabbrowser-inactive="true"] spacer
+{
+	display: -moz-box !important;
+	-moz-box-flex: 1 !important;
+}
+
+
+/*
+tabbrowser tabpanels > browser browser[browser-in-box="true"],
+tabbrowser tabpanels > vbox > browser browser[browser-in-box="true"]
+{
+	-moz-box-flex: 0 !important;
+}
+tabbrowser tabpanels > browser > hbox,
+tabbrowser tabpanels > vbox > browser > hbox
+{
+	overflow: hidden !important;
+}
+tabbrowser tabpanels > browser[tabbrowser-inactive="true"] browser[browser-in-box="true"],
+tabbrowser tabpanels > vbox > browser[tabbrowser-inactive="true"] browser[browser-in-box="true"]
+{
+	visibility: collapsed !important;
+}
+
+tabbrowser tabpanels > browser spacer,
+tabbrowser tabpanels > vbox > browser spacer
+{
+	display: -moz-box !important;
+	-moz-box-flex: 1 !important;
+}
+*/

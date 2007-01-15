@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+
+<bindings id="quickResizeBrowserBindings"
+	xmlns="http://www.mozilla.org/xbl"
+	xmlns:xbl="http://www.mozilla.org/xbl"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<binding id="browserBox" extends="xul:box">
+	<content> 
+		<xul:hbox flex="1">
+			<xul:vbox flex="1">
+				<xul:browser
+					browser-in-box="true"
+					flex="1"
+					xbl:inherits="type,disablehistory,tooltip,contextmenu,autocompletepopup"/>
+				<xul:spacer/>
+			</xul:vbox>
+			<xul:spacer/>
+		</xul:hbox>
+	</content>
+	<implementation implements="nsIAccessibleProvider, nsIObserver">
+		<field name="mContainer" readonly="true">
+			document.getAnonymousNodes(this)[0]
+		</field>
+		<field name="mRealBrowser" readonly="true">
+			this.mContainer.firstChild.firstChild
+		</field>
+
+		<property name="accessible" readonly="true"
+				onget="return this.mRealBrowser.accessible"/>
+		<property name="autoscrollEnabled" readonly="true"
+				onget="return this.mRealBrowser.autoscrollEnabled"/>
+		<property name="canGoBack" readonly="true"
+				onget="return this.mRealBrowser.canGoBack;"/>
+		<property name="canGoForward" readonly="true"
+				onget="return this.webNavigation.canGoForward;"/>
+		<method name="goBack">
+			<body><![CDATA[
+				this.mRealBrowser.goBack();
+			]]></body>
+		</method>
+		<method name="goForward">
+			<body><![CDATA[
+				this.mRealBrowser.goForward();
+			]]></body>
+		</method>
+		<method name="reload">
+			<body><![CDATA[
+				this.mRealBrowser.reload();
+			]]></body>
+		</method>
+		<method name="reloadWithFlags">
+			<parameter name="aFlags"/>
+			<body><![CDATA[
+				this.mRealBrowser.reloadWithFlags(aFlags);
+			]]></body>
+		</method>
+		<method name="stop">
+			<body><![CDATA[
+				this.mRealBrowser.stop();
+			]]></body>
+		</method>
+		<method name="loadURI">
+			<parameter name="aURI"/>
+			<parameter name="aReferrerURI"/>
+			<parameter name="aCharset"/>
+			<body><![CDATA[
+				this.mRealBrowser.loadURI(aURI, aReferrerURI, aCharset);
+			]]></body>
+		</method>
+		<method name="loadURIWithFlags">
+			<parameter name="aURI"/>
+			<parameter name="aFlags"/>
+			<parameter name="aReferrerURI"/>
+			<parameter name="aCharset"/>
+			<body><![CDATA[
+				this.mRealBrowser.loadURIWithFlags(aURI, aFlags, aReferrerURI, aCharset);
+			]]></body>
+		</method>
+		<method name="goHome">
+			<body><![CDATA[
+				this.mRealBrowser.goHome();
+			]]></body>
+		</method>
+		<property name="homePage"
+				onget="return this.mRealBrowser.homePage"
+				onset="return this.mRealBrowser.homePage = val;"/>
+		<method name="gotoIndex">
+			<parameter name="aIndex"/>
+			<body><![CDATA[
+				this.mRealBrowser.gotoIndex(aIndex);
+			]]></body>
+		</method>
+		<property name="currentURI" readonly="true"
+				onget="return this.mRealBrowser.currentURI;"/>
+		<property name="preferences" readonly="true"
+				onget="return this.mRealBrowser.preferences;"/>
+		<property name="docShell" readonly="true"
+				onget="return this.mRealBrowser.docShell;"/>
+		<property name="webNavigation" readonly="true"
+				onget="return this.mRealBrowser.webNavigation;"/>
+		<property name="_webBrowserFind"
+				onget="return this.mRealBrowser._webBrowserFind;"
+				onset="return this.mRealBrowser._webBrowserFind = val;"/>
+		<property name="webBrowserFind" readonly="true"
+				onget="return this.mRealBrowser.webBrowserFind;"/>
+		<property name="webProgress" readonly="true"
+				onget="return this.mRealBrowser.webProgress;"/>
+		<property name="contentWindow" readonly="true"
+				onget="return this.mRealBrowser.contentWindow;"/>
+		<property name="sessionHistory" readonly="true"
+				onget="return this.mRealBrowser.sessionHistory;"/>
+		<property name="markupDocumentViewer" readonly="true"
+				onget="return this.mRealBrowser.markupDocumentViewer;"/>
+		<property name="contentViewerEdit" readonly="true"
+				onget="return this.mRealBrowser.contentViewerEdit;"/>
+		<property name="contentViewerFile" readonly="true"
+				onget="return this.mRealBrowser.contentViewerFile;"/>
+		<property name="documentCharsetInfo" readonly="true"
+				onget="return this.mRealBrowser.documentCharsetInfo;"/>
+		<property name="contentDocument" readonly="true"
+				onget="return this.mRealBrowser.contentDocument;"/>
+		<property name="contentTitle" readonly="true"
+				onget="return this.mRealBrowser.contentTitle;"/>
+		<property name="mPrefs" readonly="true"
+				onget="return this.mRealBrowser.mPrefs;"/>
+		<property name="mAtomService" readonly="true"
+				onget="return this.mRealBrowser.mAtomService;"/>
+		<property name="_mStrBundle"
+				onget="return this.mRealBrowser._mStrBundle;"
+				onset="return this.mRealBrowser._mStrBundle = val;"/>
+		<property name="mStrBundle" readonly="true"
+				onget="return this.mRealBrowser.mStrBundle;"/>
+		<method name="addProgressListener">
+			<parameter name="aListener"/>
+			<body><![CDATA[
+				this.mRealBrowser.addProgressListener(aListener);
+			]]></body>
+		</method>
+		<method name="removeProgressListener">
+			<parameter name="aListener"/>
+			<body><![CDATA[
+				this.mRealBrowser.removeProgressListener(aListener);
+			]]></body>
+		</method>
+		<method name="attachFormFill">
+			<body><![CDATA[
+				this.mRealBrowser.attachFormFill();
+			]]></body>
+		</method>
+		<method name="detachFormFill">
+			<body><![CDATA[
+				this.mRealBrowser.detachFormFill();
+			]]></body>
+		</method>
+		<method name="onLoad">
+			<parameter name="aEvent"/>
+			<body><![CDATA[
+				this.mRealBrowser.onLoad(aEvent);
+			]]></body>
+		</method>
+		<method name="onUnload">
+			<parameter name="aEvent"/>
+			<body><![CDATA[
+				this.mRealBrowser.onUnload(aEvent);
+			]]></body>
+		</method>
+		<method name="updatePageReport">
+			<body><![CDATA[
+				this.mRealBrowser.updatePageReport();
+			]]></body>
+		</method>
+		<method name="onPopupBlocked">
+			<parameter name="evt"/>
+			<body><![CDATA[
+				this.mRealBrowser.onPopupBlocked(evt);
+			]]></body>
+		</method>
+		<property name="pageReport"
+				onget="return this.mRealBrowser.pageReport;"
+				onset="return this.mRealBrowser.pageReport = val;"/>
+		<property name="mDragDropHandler"
+				onget="return this.mRealBrowser.mDragDropHandler;"
+				onset="return this.mRealBrowser.mDragDropHandler = val;"/>
+		<property name="securityUI"
+				onget="return this.mRealBrowser.securityUI;"
+				onset="return this.mRealBrowser.securityUI = val;"/>
+		<property name="userTypedValue"
+				onget="return this.mRealBrowser.userTypedValue;"
+				onset="return this.mRealBrowser.userTypedValue = val;"/>
+		<property name="mFormFillAttached"
+				onget="return this.mRealBrowser.mFormFillAttached;"
+				onset="return this.mRealBrowser.mFormFillAttached = val;"/>
+		<property name="focusedWindow"
+				onget="return this.mRealBrowser.focusedWindow;"
+				onset="return this.mRealBrowser.focusedWindow = val;"/>
+		<property name="focusedElement"
+				onget="return this.mRealBrowser.focusedElement;"
+				onset="return this.mRealBrowser.focusedElement = val;"/>
+		<method name="destroy">
+			<body><![CDATA[
+				this.mRealBrowser.destroy();
+			]]></body>
+		</method>
+		<method name="observe">
+			<parameter name="aSubject"/>
+			<parameter name="aTopic"/>
+			<parameter name="aState"/>
+			<body><![CDATA[
+				this.mRealBrowser.observe(aSubject, aTopic, aState);
+			]]></body>
+		</method>
+
+		<property name="_AUTOSCROLL_SPEED"
+				onget="return this.mRealBrowser._AUTOSCROLL_SPEED;"
+				onset="return this.mRealBrowser._AUTOSCROLL_SPEED = val;"/>
+		<property name="_AUTOSCROLL_SNAP"
+				onget="return this.mRealBrowser._AUTOSCROLL_SNAP;"
+				onset="return this.mRealBrowser._AUTOSCROLL_SNAP = val;"/>
+		<property name="_clientFrameDoc"
+				onget="return this.mRealBrowser._clientFrameDoc;"
+				onset="return this.mRealBrowser._clientFrameDoc = val;"/>
+		<property name="_clientFrameBody"
+				onget="return this.mRealBrowser._clientFrameBody;"
+				onset="return this.mRealBrowser._clientFrameBody = val;"/>
+		<property name="_autoScrollMarkerImage"
+				onget="return this.mRealBrowser._autoScrollMarkerImage;"
+				onset="return this.mRealBrowser._autoScrollMarkerImage = val;"/>
+		<property name="_isScrolling"
+				onget="return this.mRealBrowser._isScrolling;"
+				onset="return this.mRealBrowser._isScrolling = val;"/>
+		<property name="_snapOn"
+				onget="return this.mRealBrowser._snapOn;"
+				onset="return this.mRealBrowser.x_snapOn = val;"/>
+		<property name="_scrollCount"
+				onget="return this.mRealBrowser._scrollCount;"
+				onset="return this.mRealBrowser._scrollCount = val;"/>
+		<property name="_startX"
+				onget="return this.mRealBrowser._startX;"
+				onset="return this.mRealBrowser._startX = val;"/>
+		<property name="_startY"
+				onget="return this.mRealBrowser._startY;"
+				onset="return this.mRealBrowser._startY = val;"/>
+		<property name="_clientX"
+				onget="return this.mRealBrowser._clientX;"
+				onset="return this.mRealBrowser._clientX = val;"/>
+		<property name="_clientY"
+				onget="return this.mRealBrowser._clientY;"
+				onset="return this.mRealBrowser._clientY = val;"/>
+		<method name="stopScroll">
+			<body><![CDATA[
+				this.mRealBrowser.stopScroll();
+			]]></body>
+		</method>
+		<method name="autoScrollLoop">
+			<body><![CDATA[
+				this.mRealBrowser.autoScrollLoop();
+			]]></body>
+		</method>
+		<method name="isAutoscrollBlocker">
+			<parameter name="node"/>
+			<body><![CDATA[
+				return this.mRealBrowser.isAutoscrollBlocker(node);
+			]]></body>
+		</method>
+		<method name="showAutoscrollMarker">
+			<parameter name="evt"/>
+			<body><![CDATA[
+				this.mRealBrowser.showAutoscrollMarker(evt);
+			]]></body>
+		</method>
+
+		<property name="_findInstData"
+				onget="return this.mRealBrowser._findInstData;"
+				onset="return this.mRealBrowser._findInstData = val;"/>
+		<property name="findInstData" readonly="true"
+				onget="return this.mRealBrowser.findInstData;"/>
+		<property name="canFindAgain" readonly="true"
+				onget="return this.mRealBrowser.canFindAgain;"/>
+		<method name="find">
+			<body><![CDATA[
+				this.mRealBrowser.find();
+			]]></body>
+		</method>
+		<method name="findAgain">
+			<body><![CDATA[
+				this.mRealBrowser.findAgain();
+			]]></body>
+		</method>
+		<method name="findPrevious">
+			<body><![CDATA[
+				this.mRealBrowser.findPrevious();
+			]]></body>
+		</method>
+
+		<constructor>
+			<![CDATA[
+				try {
+					this.mRealBrowser.onxblconstructor();
+				}
+				catch(e) {
+				}
+			]]>
+		</constructor>
+		<destructor>
+			<![CDATA[
+				try {
+					this.mRealBrowser.onxbldestructor();
+				}
+				catch(e) {
+				}
+			]]>
+		</destructor>
+
+	</implementation>
+</binding>
+
+</bindings>

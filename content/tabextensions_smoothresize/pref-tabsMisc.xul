@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://tabextensions_smoothresize/locale/">
+
+<overlay
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript"><![CDATA[
+
+if (!('_elementIDs' in window) || !window._elementIDs)
+	var _elementIDs = [];
+
+_elementIDs.push('enable_smooth_resizing');
+
+	]]></script>
+
+<box id="miscPrefContainer">
+	<checkbox id="enable_smooth_resizing"
+		label="&enable_smooth_resizing;"
+		prefstring="browser.tabs.extensions.enable_smooth_resizing"/>
+</box>
+
+</overlay>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+
+		<em:id>{A5D54013-CB14-4b24-B8CC-067537DDBA63}</em:id>
+
+		<em:version>1.0.2004081801</em:version>
+
+
+		<em:targetApplication>
+			<Description><!-- Firefox -->
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>0.8</em:minVersion>
+				<em:maxVersion>1.5.0.*</em:maxVersion>
+			</Description>
+			<Description><!-- Mozilla Suite -->
+				<em:id>{86c18b42-e466-45a9-ae7a-9b95ba6f5640}</em:id>
+				<em:minVersion>1.0</em:minVersion>
+				<em:maxVersion>1.8</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+
+		<em:name>Tabbrowser Extensions:Smooth Resizing Patch</em:name>
+		<em:description>Resizing of multi-tabbed windows are optimized. This extension requires the "Tabbrowser Extensions."</em:description>
+		<em:creator>SHIMODA Hiroshi</em:creator>
+		<em:homepageURL>http://piro.sakura.ne.jp/xul/_tabextensions_modules.html</em:homepageURL>
+		<!--em:updateURL></em:updateURL-->
+
+
+		<em:optionsURL>chrome://tabextensions/content/pref/prefDialogCall.xul</em:optionsURL>
+		<!--em:aboutURL></em:aboutURL-->
+		<!--em:iconURL></em:iconURL-->
+
+
+		<em:file>
+			<Description about="urn:mozilla:extension:file:tabextensions_smoothresize.jar">
+				<em:package>content/tabextensions_smoothresize/</em:package>
+				<em:locale>locale/en-US/tabextensions_smoothresize/</em:locale>
+				<em:locale>locale/ja-JP/tabextensions_smoothresize/</em:locale>
+			</Description>
+		</em:file>
+
+
+		<em:requires>
+			<!-- Tabbrowser Extensions -->
+			<Description>
+				<em:id>{0B0B0DA8-08BA-4bc6-987C-6BC9F4D8A81E}</em:id>
+				<em:minVersion>1.10.2004042901</em:minVersion>
+				<em:maxVersion>1.99.9999999999</em:maxVersion>
+			</Description>
+		</em:requires>
+
+	</Description>
+</RDF>

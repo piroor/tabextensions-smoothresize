@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://tabextensions_smoothresize/content/smoothresize.css" type="text/css"?>
+
+<overlay
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://tabextensions_smoothresize/content/smoothresize.js"/>
+
+
+</overlay>

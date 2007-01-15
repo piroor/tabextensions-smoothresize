@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:chrome="http://www.mozilla.org/rdf/chrome#">
+
+	<!-- list all the packages being supplied by this jar -->
+	<RDF:Seq about="urn:mozilla:package:root">
+		<RDF:li resource="urn:mozilla:package:tabextensions_smoothresize"/>
+	</RDF:Seq>
+
+	<!-- package information -->
+	<RDF:Description about="urn:mozilla:package:tabextensions_smoothresize"
+		chrome:name="tabextensions_smoothresize"
+		chrome:displayName="Tabbrowser Extensions:Smooth Resizing Patch"
+		chrome:author="SHIMODA Hiroshi"
+		chrome:authorURL="http://piro.sakura.ne.jp/"
+		chrome:extension="true"
+		chrome:description="Optimizes resizing of multi-tabbed windows. You can resize browsers smoothly even if they have many tabs. This depends on &quot;Tabbrowser Extensions&quot;."/>
+
+
+	<!-- overlay information -->
+	<RDF:Seq about="urn:mozilla:overlays">
+		<RDF:li resource="chrome://tabextensions/content/globalOverlay.xul"/>
+		<RDF:li resource="chrome://tabextensions/content/pref/pref-tabsMisc.xul"/>
+	</RDF:Seq>
+
+
+	<RDF:Seq about="chrome://tabextensions/content/globalOverlay.xul">
+		<RDF:li>chrome://tabextensions_smoothresize/content/globalOverlay.xul</RDF:li>
+	</RDF:Seq>
+	<RDF:Seq about="chrome://tabextensions/content/pref/pref-tabsMisc.xul">
+		<RDF:li>chrome://tabextensions_smoothresize/content/pref-tabsMisc.xul</RDF:li>
+	</RDF:Seq>
+
+</RDF:RDF>
