@@ -9,8 +9,10 @@
                    em:creator="SHIMODA Hiroshi"
                    em:description="Resizing of multi-tabbed windows are optimized. This extension requires the &quot;Tabbrowser Extensions.&quot;"
                    em:homepageURL="http://piro.sakura.ne.jp/xul/_tabextensions_modules.html"
-                   em:iconURL=""
                    em:optionsURL="chrome://tabextensions/content/pref/prefDialogCall.xul">
+<!--
+                   em:iconURL=""
+-->
 
 
     <em:updateURL>https://pub.cozmixng.org/~piro/xul/xul.rdf.en</em:updateURL>
